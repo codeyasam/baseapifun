@@ -28,9 +28,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(passwordEncoder);
 	}
 	
-	@Override
-	public void configure(HttpSecurity http) throws Exception {
-		http.headers().frameOptions().sameOrigin();	
-		http.csrf().disable();
-	}
 }
