@@ -1,6 +1,6 @@
 insert into users (username, email, password) values 
-	('jojo', 'codeyasam', '$2a$10$KRtic9o7kMHp20/OgC96aODJoVRKQqLMPahmzXh.es5zo3xG38QYq'),
-	('codeyasam', 'jojo', '$2a$10$KRtic9o7kMHp20/OgC96aODJoVRKQqLMPahmzXh.es5zo3xG38QYq');
+	('qwer', 'codeyasam', '$2a$10$KRtic9o7kMHp20/OgC96aODJoVRKQqLMPahmzXh.es5zo3xG38QYq'),
+	('asdf', 'jojo', '$2a$10$KRtic9o7kMHp20/OgC96aODJoVRKQqLMPahmzXh.es5zo3xG38QYq');
 
 insert into roles (role) values
 	('ROLE_USER'), ('ROLE_ADMIN'), ('ROLE_ACTUATOR');

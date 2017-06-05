@@ -13,9 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="users")
+@Table(name="users", uniqueConstraints={ @UniqueConstraint(columnNames={"USERNAME", "EMAIL"}) })
 public class User {
 	
 	@Id
@@ -41,7 +42,7 @@ public class User {
 			inverseJoinColumns={@JoinColumn(name="role_id")}
 	)
 	private Set<Role> roles = new HashSet<Role>();
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -71,7 +72,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password;		
 	}
 
 	public String getFirstName() {

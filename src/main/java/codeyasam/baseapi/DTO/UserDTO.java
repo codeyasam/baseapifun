@@ -1,6 +1,5 @@
 package codeyasam.baseapi.DTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDTO {
