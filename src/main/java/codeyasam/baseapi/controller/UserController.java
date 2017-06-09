@@ -11,13 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import codeyasam.baseapi.DTO.ImageHolder;
 import codeyasam.baseapi.DTO.UserDTO;
 import codeyasam.baseapi.domain.Role;
 import codeyasam.baseapi.domain.User;
 import codeyasam.baseapi.exception.UserNotFoundException;
+import codeyasam.baseapi.service.FileSystemStorageService;
 import codeyasam.baseapi.service.UserService;
 
 @RestController
@@ -26,11 +30,13 @@ public class UserController {
 	
 	private UserService userService;
 	private ModelMapper modelMapper;
+	private FileSystemStorageService storageService;
 	
 	@Autowired
-	public UserController(UserService userService, ModelMapper modelMapper) {
+	public UserController(UserService userService, ModelMapper modelMapper, FileSystemStorageService storageService) {
 		this.userService = userService;
 		this.modelMapper = modelMapper;
+		this.storageService = storageService;
 	}
 	
 	@RequestMapping("/{id}")
@@ -47,6 +53,11 @@ public class UserController {
 		}
 		userDTO.setRoles(roles);
 		return userDTO;
+	}
+	
+	@RequestMapping(value="/fileUpload", method=RequestMethod.POST)
+	public void handleFileUpload(@RequestBody ImageHolder imageHolder) {		
+		storageService.storeBase64encodedImage(imageHolder.getEncodedImageString());
 	}
 	
 	private UserDTO convertToDTO(User user) {
