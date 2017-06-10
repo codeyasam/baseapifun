@@ -45,6 +45,7 @@ public class ClientDetailsImpl implements ClientDetails {
 		Set<String> grantTypes = new HashSet<>();
 		grantTypes.add("client_credentials");
 		grantTypes.add("password");
+		grantTypes.add("refresh_token");
 		return grantTypes;
 	}
 
